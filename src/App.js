@@ -1,25 +1,60 @@
-import logo from './logo.svg';
 import './App.css';
+import { Component } from 'react';
+const pokedex = require('pokeapi-js-wrapper');
+const myPokedex = new pokedex.Pokedex();
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      pokemons: [
+        {
+          name:'pikachu',
+          location:'richmond'
+        },
+        {
+          name:'Squirtle',
+          location:'Vancouver'
+        },
+        {
+          name:'Chimchar',
+          location:'Coquitlam'
+        },
+        {
+          name:'Ditto',
+          location:'Surrey'
+        }
+      ],
+    }
+  }
+
+  async componentDidMount() {
+    try {
+      const response = await myPokedex.getPokemonsList();
+
+      console.log(response);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  render() {
+    return(
+      <div className='App'>
+        {this.state.pokemons.map((pokemon) =>{
+          return(
+            <div className='pokemon' key={pokemon.name}>
+              <h1>{pokemon.name}</h1>
+              <h2>{pokemon.location}</h2>
+            </div>
+          )
+        })}
+      </div>
+    );
+  }
 }
+
 
 export default App;
