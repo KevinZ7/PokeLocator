@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: 'pokemon_hollow';
+  src: url(../public/fonts/Pokemon\ Hollow.ttf);
+}
+
+@font-face {
+  font-family: 'pokemon_solid';
+  src: url(../public/fonts/Pokemon\ Solid.ttf);
+}
+
+.pokemon{
+  font-family: 'pokemon_hollow';
+  font-size: 2em;
+  color: #000;
+}
+

@@ -1,7 +1,10 @@
 import './App.css';
 import { Component } from 'react';
+import Main from './components/main/Main.component';
+
 const pokedex = require('pokeapi-js-wrapper');
 const myPokedex = new pokedex.Pokedex();
+
 
 class App extends Component {
   constructor() {
@@ -43,14 +46,9 @@ class App extends Component {
   render() {
     return(
       <div className='App'>
-        {this.state.pokemons.map((pokemon) =>{
-          return(
-            <div className='pokemon' key={pokemon.name}>
-              <h1>{pokemon.name}</h1>
-              <h2>{pokemon.location}</h2>
-            </div>
-          )
-        })}
+        <Main>
+
+        </Main>
       </div>
     );
   }
